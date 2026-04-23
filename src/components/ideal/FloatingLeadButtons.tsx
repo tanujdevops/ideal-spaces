@@ -10,7 +10,7 @@ const FloatingLeadButtons: React.FC = () => {
 
   return (
     <motion.div
-      className="pointer-events-none fixed bottom-4 left-4 right-4 z-50 flex items-end justify-between gap-3 md:left-auto md:right-5 md:flex-col"
+      className="pointer-events-none fixed bottom-4 left-4 right-4 z-50 hidden md:flex items-end justify-between gap-3 md:left-auto md:right-5 md:flex-col"
       initial={shouldReduceMotion ? false : { opacity: 0, y: 18 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: 0.25 }}
