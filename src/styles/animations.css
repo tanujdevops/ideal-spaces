@@ -1,0 +1,124 @@
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body[data-auto-animation-ready='true'] [data-auto-reveal='pending'] {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0) scale(0.985);
+    filter: blur(3px);
+  }
+
+  body[data-auto-animation-ready='true'] [data-auto-reveal='visible'] {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
+    transition:
+      opacity 720ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 720ms cubic-bezier(0.22, 1, 0.36, 1),
+      filter 720ms cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--auto-delay, 0ms);
+  }
+
+  [data-auto-interactive='true'] {
+    transition:
+      transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 220ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 180ms ease,
+      background-color 180ms ease,
+      color 180ms ease,
+      opacity 180ms ease;
+  }
+
+  :is(a, button, [role='button'], summary)[data-auto-interactive='true'] {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    touch-action: manipulation;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    :is(a, button, [role='button'], summary)[data-auto-interactive='true']:hover {
+      transform: translate3d(0, -2px, 0);
+    }
+
+    nav :is(a, button)[data-auto-interactive='true']:hover {
+      transform: translate3d(0, -1px, 0);
+    }
+
+    [data-auto-tilt='true'] {
+      transform:
+        perspective(900px)
+        rotateX(var(--auto-tilt-x, 0deg))
+        rotateY(var(--auto-tilt-y, 0deg))
+        translate3d(0, var(--auto-lift, 0), 0);
+      transform-style: preserve-3d;
+      transition:
+        transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 260ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    [data-auto-tilt='true']:hover {
+      --auto-lift: -5px;
+      box-shadow: 0 24px 48px -24px rgba(17, 24, 39, 0.35);
+    }
+
+    [data-auto-tilt='true'] [data-auto-image='true'] {
+      transition: transform 780ms cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    [data-auto-tilt='true']:hover [data-auto-image='true'] {
+      transform: scale(1.045);
+    }
+  }
+
+  .auto-ripple {
+    position: absolute;
+    z-index: -1;
+    border-radius: 999px;
+    background: currentColor;
+    opacity: 0.18;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0);
+    animation: auto-ripple 620ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  :is(a, button, [role='button'], summary)[data-auto-interactive='true']:active {
+    transform: scale(0.98);
+  }
+
+  body[data-auto-animation-ready='true'] [data-auto-reveal='pending'] {
+    transform: translate3d(0, 16px, 0);
+    filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  [data-auto-reveal],
+  [data-auto-tilt],
+  [data-auto-image] {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: none !important;
+  }
+}
+
+@keyframes auto-ripple {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
