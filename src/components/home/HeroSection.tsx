@@ -74,7 +74,7 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section className="relative bg-[#FFFFFF] pt-20 pb-32 overflow-hidden">
+    <section className="relative bg-[#FFFFFF] pt-12 md:pt-20 pb-32 overflow-hidden">
         {/* Background decorative blurs */}
         <motion.div 
           animate={
