@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { Link } from '@/lib/router';
 import { homeContent, idealAssets, whatsappLink } from '@/data/idealSpaces';
 
-const dynamicHeroWords = ['Celebrations', 'Launches', 'Shows', 'Gatherings', 'Sports'];
+const dynamicHeroWords = ['Celebration', 'Launches', 'Shows', 'Gatherings', 'Sports'];
 
 const HeroSection: React.FC = () => {
   const shouldReduceMotion = useReducedMotion();
